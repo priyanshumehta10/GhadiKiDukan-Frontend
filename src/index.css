@@ -1,0 +1,279 @@
+@import "tailwindcss";
+
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  background-color: #ffffff; /* Tailwind gray-800 */
+}
+
+body {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  min-width: auto; /* or just remove this line */
+  background-color: #ffffff; 
+}
+
+/* Links */
+a {
+  font-weight: 500;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #1E90FF; /* indigo-500 (was #535bf2) */
+}
+
+.logo:hover {
+  color: #000; /* or keep current color */
+  text-decoration: none; /* remove underline */
+}
+
+
+/* Headings */
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+/* Buttons */
+/* scope buttons */
+button:not(.ant-btn) {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  color: #e5e7eb;
+}
+button:hover {
+  border-color: #32CD32; /* softer indigo */
+}
+button:focus,
+button:focus-visible {
+  outline: 3px solid #818cf8; /* softer focus ring */
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  button {
+    background-color: #f9f9f9;
+    color: #111827; /* dark text */
+  }
+}
+/* Dark mode overrides for Ant Design Table */
+.dark-mode-table .ant-table-thead > tr > th {
+  background-color: #1f2937 !important; /* gray-800 */
+  color: #fff !important;
+}
+
+/* Keep header color even on sorted / hover */
+.dark-mode-table .ant-table-thead > tr > th.ant-table-column-sort,
+.dark-mode-table .ant-table-thead > tr > th.ant-table-column-sort:hover,
+.dark-mode-table .ant-table-thead > tr > th.ant-table-column-sort-up,
+.dark-mode-table .ant-table-thead > tr > th.ant-table-column-sort-down {
+  background-color: #1f2937 !important; /* gray-800 */
+  color: #fff !important;
+}
+
+/* Table body row hover */
+.dark-mode-table .ant-table-tbody > tr.ant-table-row:hover > td {
+  background-color: #4b5563 !important; /* gray-600 hover */
+  color: #fff !important;
+}
+
+/* Table body */
+.dark-mode-table .ant-table-tbody > tr > td {
+  background-color: #374151 !important; /* gray-700 */
+  color: #fff !important;
+}
+
+/* Input search box */
+.dark-mode-table .ant-input {
+  background-color: #1f2937 !important;
+  color: #fff !important;
+  border-color: #4b5563 !important;
+}
+.dark-mode-table .ant-input::placeholder {
+  color: #9ca3af !important;
+}
+/* Dark mode for Ant Design Tag inside dark-mode-table */
+.dark-mode-table .ant-tag {
+  background-color: #374151 !important; /* gray-700 */
+  color: #f3f4f6 !important; /* gray-100 text */
+  border: none !important;
+}
+
+.dark-mode-table .ant-tag:hover {
+  background-color: #4b5563 !important; /* gray-600 on hover */
+  color: #fff !important;
+}
+
+/* Dark Mode Modal */
+.dark-mode-modal .ant-modal-content {
+  background-color: #1f2937 !important; /* dark gray modal background */
+  color: #fff !important;
+  border-radius: 8px;
+}
+
+.dark-mode-modal .ant-modal-header {
+  background-color: #1f2937 !important;
+  border-bottom: 1px solid #4b5563;
+  color: #fff;
+}
+
+.dark-mode-modal .ant-modal-title {
+  color: #fff !important;
+}
+
+.dark-mode-modal .ant-modal-body {
+  background-color: #1f2937 !important;
+  color: #fff;
+}
+
+/* Form inputs inside modal */
+.dark-mode-modal .ant-input,
+.dark-mode-modal .ant-select-selector,
+.dark-mode-modal .ant-input-affix-wrapper {
+  background-color: #374151 !important; /* gray-700 */
+  color: #fff !important;
+  border: 1px solid #4b5563 !important; /* gray-600 */
+}
+
+.dark-mode-modal .ant-input::placeholder,
+.dark-mode-modal .ant-select-selection-placeholder {
+  color: #9ca3af !important; /* gray-400 placeholder */
+}
+
+/* Select dropdown options */
+.dark-mode-modal .ant-select-dropdown {
+  background-color: #1f2937 !important;
+  color: #fff;
+}
+
+/* Buttons */
+.dark-mode-modal .ant-btn-primary {
+  background-color: #2563eb !important; /* blue-600 */
+  color: #fff !important;
+  border: none !important;
+}
+
+.dark-mode-modal .ant-btn-default {
+  background-color: #374151 !important; /* gray-700 */
+  color: #fff !important;
+  border: none !important;
+}
+
+/* Hover & focus states */
+.dark-mode-modal .ant-input:focus,
+.dark-mode-modal .ant-input-affix-wrapper-focused,
+.dark-mode-modal .ant-select-focused .ant-select-selector {
+  border-color: #2563eb !important; /* blue focus */
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2) !important;
+}
+
+.dark-mode-modal .ant-btn-primary:hover {
+  background-color: #1d4ed8 !important; /* blue-700 hover */
+}
+
+
+
+.dark-mode-modal .ant-btn-default:hover {
+  background-color: #4b5563 !important; /* gray-600 hover */
+}
+
+/* Dark mode modal form labels */
+.dark-mode-modal .ant-form-item-label > label {
+  color: #fff !important;
+}
+
+/* Placeholder text color */
+.dark-mode-modal .ant-input::placeholder {
+  color: #9ca3af !important; /* gray-400 */
+}
+
+/* Select placeholder text color */
+.dark-mode-modal .ant-select-selection-placeholder {
+  color: #9ca3af !important;
+}
+
+/* Select dropdown items */
+.dark-mode-modal .ant-select-item-option-content {
+  color: #fff !important;
+}
+
+/* Selected value in select */
+.dark-mode-modal .ant-select-selection-item {
+  color: #fff !important;
+}
+
+/* Dark mode Dashboard */
+.dark-mode-dashboard {
+  background-color: #374151; /* gray-800 */
+  color: #fff !important;
+  min-height: 100vh;
+  padding: 1.5rem;
+}
+
+/* Headings inside dashboard */
+.dark-mode-dashboard h1,
+.dark-mode-dashboard h2,
+.dark-mode-dashboard h3,
+.dark-mode-dashboard h4 {
+  color: #fff;
+}
+
+/* Cards */
+.dark-mode-dashboard .ant-card {
+  background-color: #1f2937 !important; /* dark card bg */
+  color: #fff !important;
+  border: 1px solid #fff !important;
+  border-radius: 8px !important;
+}
+
+/* Card titles */
+.dark-mode-dashboard .ant-card-head {
+  background-color: #1f2937 !important;
+  border-bottom: 1px solid #4b5563 !important;
+}
+
+.dark-mode-dashboard .ant-card-head-title {
+  color: #fff !important;
+  font-weight: 600;
+}
+
+.dark-mode-dashboard .ant-statistic-title {
+  color: #fff !important;
+}
+
+.dark-mode-dashboard .ant-statistic-content-value {
+  color: #fff !important;
+}
+
+.dark-mode-dashboard .ant-statistic-content-prefix {
+  color: #fff !important;
+}
+
+
+
+.custom-dark-rate .ant-rate-star:not(.ant-rate-star-full) .ant-rate-star-second,
+.custom-dark-rate .ant-rate-star:not(.ant-rate-star-full) .ant-rate-star-first {
+  color: #6b7280 !important; /* Tailwind gray-500 */
+}
+
+/* CSS */
+.custom-switch.ant-switch {
+  background-color: #6b7280 !important; /* when off */
+}
+
+.custom-switch.ant-switch-checked {
+  background-color: #52c41a !important; /* when on (green or your custom color) */
+}
+
