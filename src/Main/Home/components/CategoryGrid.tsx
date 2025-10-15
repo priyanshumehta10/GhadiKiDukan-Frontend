@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux";
 import { fetchByTagRequest } from "../slice";
+import { useNavigate } from "react-router-dom";
 const categories = [
   { name: "Watches", img: "https://res.cloudinary.com/do8shaoon/image/upload/v1760106330/productGroups/jwsbwbutmrrmtxbuflle.webp" },
   { name: "Perfume", img: "https://res.cloudinary.com/do8shaoon/image/upload/v1760106330/productGroups/jwsbwbutmrrmtxbuflle.webp" },
@@ -13,8 +14,10 @@ const categories = [
 
 export default function CategoryGrid() {
   const dispatch = useDispatch();
+  const navigate =  useNavigate();
   const handleClick = (name:string) => {
     dispatch(fetchByTagRequest(name))
+    navigate('/packages')
   }
   return (
     <div className="px-4 py-10">
@@ -37,7 +40,8 @@ export default function CategoryGrid() {
           <div
             key={cat.name}
             onClick={()=>handleClick(cat.name)}
-            className="relative group rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300"
+
+            className="relative group rounded-2xl overflow-hidden cursor-pointer shadow-md hover:shadow-xl transition-shadow duration-300"
           >
             <img
               src={cat.img}

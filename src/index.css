@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'Sharp End Bold';
+  src: url('/src/assets/fonts/SharpEnd-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
 
 html, body, #root {
   height: 100%;

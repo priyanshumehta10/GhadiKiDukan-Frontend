@@ -36,13 +36,13 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 w-full z-50 border-b bg-white shadow-sm">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between px-4 py-3 gap-3 md:gap-0">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between px-4  gap-3 md:gap-0">
         {/* Top row: logo and menu toggle */}
         <div className="flex items-center justify-between w-full md:w-auto">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <img src={ghadiKiDukanLogo} alt="Logo" className="h-10 w-auto" />
-            <span className="text-lg font-semibold tracking-wide text-gray-800">
+            <img src={ghadiKiDukanLogo} alt="Logo" className="h-18 w-auto" />
+            <span className="text-lg font-semibold tracking-wide text-gray-800" >
               Ghadi ki Dukan
             </span>
           </Link>

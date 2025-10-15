@@ -115,7 +115,7 @@ export async function getTagImages() {
 }
 
 export async function getTagWiseData(tag:string) {
-  const response = await api.get(`/api/productGroup/Tag?q=${tag}`); 
+  const response = await api.get(`/api/product/productByTag?q=${tag}`); 
   return response.data; 
 }
 
