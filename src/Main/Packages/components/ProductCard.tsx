@@ -1,5 +1,8 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import Slider from "react-slick";
+import { fetchPackageDetailsRequest } from "../slice";
 
 interface ProductCardProps {
   product: {
@@ -13,6 +16,8 @@ interface ProductCardProps {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const discount =
     product.price > product.finalPrice
       ? Math.round(((product.price - product.finalPrice) / product.price) * 100)
@@ -21,6 +26,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const sizes = product.availableSizes
     ? product.availableSizes.split(",").map((s) => s.trim())
     : [];
+
+    const handleClick = () => {
+      dispatch(fetchPackageDetailsRequest(product._id));
+      navigate(`/packages/pck/${product._id}`);
+    }
 
   // 🧭 Carousel settings
   const settings = {
@@ -35,9 +45,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   };
 
   return (
-    <div className="min-w-[260px] max-w-[260px] bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-200">
+    <div onClick={handleClick} className="min-w-[260px] max-w-[260px] bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-200" >
       {/* 🖼 Carousel for product photos */}
-      <div className="w-full h-48">
+      <div className="w-full h-48"  >
         {product.photos?.length ? (
           <Slider {...settings}>
             {product.photos.map((photo, index) => (
