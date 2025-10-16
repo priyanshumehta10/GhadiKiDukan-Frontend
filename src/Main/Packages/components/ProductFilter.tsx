@@ -16,22 +16,31 @@ const ProductFilter: React.FC<FilterProps> = ({ onFilterChange, availableSizes }
     });
   };
 
-  return (
-    <div className="w-full bg-white border rounded-lg shadow-sm p-4">
-      <h3 className="font-semibold text-gray-800 mb-3">Filters</h3>
+  const handleReset = () => {
+    setSelectedSize(null);
+    setMaxPrice(null);
+    onFilterChange({
+      size: null,
+      maxPrice: null,
+    });
+  };
 
-      {/* Size */}
-      <div className="mb-4">
-        <h4 className="text-sm font-medium text-gray-700 mb-2">Size</h4>
+  return (
+    <div className="w-full bg-white border rounded-xl shadow-md p-5">
+      <h3 className="font-bold text-gray-800 text-lg mb-4">Filters</h3>
+
+      {/* Size Filter */}
+      <div className="mb-5">
+        <h4 className="text-sm font-semibold text-gray-700 mb-2">Size</h4>
         <div className="flex flex-wrap gap-2">
           {availableSizes.map((size) => (
             <button
               key={size}
               onClick={() => setSelectedSize(size === selectedSize ? null : size)}
-              className={`text-xs px-2 py-1 rounded-md border ${
+              className={`text-sm px-3 py-1.5 rounded-lg border transition-colors duration-200 ${
                 selectedSize === size
                   ? "bg-indigo-600 text-white border-indigo-600"
-                  : "border-gray-300 text-gray-700"
+                  : "border-gray-300 text-gray-700 hover:bg-gray-100"
               }`}
             >
               {size}
@@ -40,24 +49,33 @@ const ProductFilter: React.FC<FilterProps> = ({ onFilterChange, availableSizes }
         </div>
       </div>
 
-      {/* Price */}
-      <div className="mb-4">
-        <h4 className="text-sm font-medium text-gray-700 mb-2">Max Price</h4>
+      {/* Max Price Filter */}
+      <div className="mb-5">
+        <h4 className="text-sm font-semibold text-gray-700 mb-2">Max Price</h4>
         <input
           type="number"
           placeholder="Enter price"
-          className="w-full border border-gray-300 rounded-md px-2 py-1 text-sm"
+          className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400"
           value={maxPrice ?? ""}
           onChange={(e) => setMaxPrice(Number(e.target.value) || null)}
         />
       </div>
 
-      <button
-        onClick={handleApply}
-        className="w-full bg-indigo-600 text-white text-sm py-1.5 rounded-md hover:bg-indigo-700 transition"
-      >
-        Apply Filters
-      </button>
+      {/* Buttons */}
+      <div className="flex gap-2">
+        <button
+          onClick={handleApply}
+          className="flex-1 bg-indigo-600 text-white text-sm py-2 rounded-lg hover:bg-indigo-700 transition"
+        >
+          Apply
+        </button>
+        <button
+          onClick={handleReset}
+          className="flex-1 bg-gray-200 text-gray-700 text-sm py-2 rounded-lg hover:bg-gray-300 transition"
+        >
+          Reset
+        </button>
+      </div>
     </div>
   );
 };
