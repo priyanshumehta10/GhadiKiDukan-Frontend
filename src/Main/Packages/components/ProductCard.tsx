@@ -27,12 +27,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     ? product.availableSizes.split(",").map((s) => s.trim())
     : [];
 
-    const handleClick = () => {
-      dispatch(fetchPackageDetailsRequest(product._id));
-      navigate(`/packages/pck/${product._id}`);
-    }
+  const handleClick = () => {
+    dispatch(fetchPackageDetailsRequest(product._id));
+    navigate(`/packages/pck/${product._id}`);
+  };
 
-  // 🧭 Carousel settings
   const settings = {
     dots: true,
     infinite: true,
@@ -45,17 +44,20 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   };
 
   return (
-    <div onClick={handleClick} className="min-w-[260px] max-w-[260px] bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-200" >
-      {/* 🖼 Carousel for product photos */}
-      <div className="w-full h-48"  >
+    <div
+      onClick={handleClick}
+      className="cursor-pointer bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-200 flex flex-col"
+    >
+      {/* Carousel */}
+      <div className="w-full aspect-[4/3]">
         {product.photos?.length ? (
           <Slider {...settings}>
-            {product.photos.map((photo, index) => (
-              <div key={index}>
+            {product.photos.map((photo, idx) => (
+              <div key={idx}>
                 <img
                   src={photo.url}
-                  alt={`${product.modelName}-${index}`}
-                  className="w-full h-48 object-cover"
+                  alt={`${product.modelName}-${idx}`}
+                  className="w-full h-full object-cover rounded-t-xl"
                 />
               </div>
             ))}
@@ -64,40 +66,40 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           <img
             src="https://via.placeholder.com/300x200"
             alt={product.modelName}
-            className="w-full h-48 object-cover"
+            className="w-full h-full object-cover rounded-t-xl"
           />
         )}
       </div>
 
-      {/* 🛍 Product Info */}
-      <div className="p-4">
-        <h3 className="font-semibold text-sm mb-1 truncate text-gray-800">
+      {/* Product Info */}
+      <div className="p-4 flex flex-col flex-1">
+        <h3 className="font-semibold text-sm sm:text-base mb-1 truncate text-gray-800">
           {product.modelName}
         </h3>
 
-        <div className="flex items-center gap-2 mb-1">
-          <p className="text-indigo-600 font-bold text-sm">
+        <div className="flex items-center gap-2 mb-1 flex-wrap">
+          <p className="text-indigo-600 font-bold text-sm sm:text-base">
             ₹{product.finalPrice}
           </p>
           {discount > 0 && (
-            <p className="text-gray-400 text-xs line-through">
+            <p className="text-gray-400 text-xs sm:text-sm line-through">
               ₹{product.price}
             </p>
           )}
         </div>
 
         {discount > 0 && (
-          <p className="text-green-600 text-xs font-medium mb-2">
+          <p className="text-green-600 text-xs sm:text-sm font-medium mb-2">
             {discount}% OFF
           </p>
         )}
 
         {sizes.length > 0 && (
-          <div className="flex flex-wrap gap-1">
+          <div className="flex flex-wrap gap-1 mt-auto">
             {sizes.map((size, index) => (
               <span
                 key={index}
-                className="text-xs border border-gray-300 px-2 py-[1px] rounded-md text-gray-700"
+                className="text-xs sm:text-sm border border-gray-300 px-2 py-[2px] rounded-md text-gray-700"
               >
                 {size}
               </span>

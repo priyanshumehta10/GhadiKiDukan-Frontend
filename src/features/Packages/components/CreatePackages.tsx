@@ -29,32 +29,42 @@ const CreateProduct = () => {
     setFileList(fileList);
   };
 
-  const onFinish = (values: any) => {
-    if (fileList.length !== 5) {
-      message.error("Please upload exactly 5 photos");
-      return;
-    }
+const onFinish = (values: any) => {
+  if (fileList.length !== 5) {
+    message.error("Please upload exactly 5 photos");
+    return;
+  }
 
-    const formData = new FormData();
+  const formData = new FormData();
 
-
-
-    Object.entries(values).forEach(([key, value]) => {
+  Object.entries(values).forEach(([key, value]) => {
+    if (key === "availableSizes") {
+      // If it's blank, null, undefined, or an empty array, send empty string
+      if (!value || (Array.isArray(value) && value.length === 0)) {
+        formData.append(key, "");
+      } else if (Array.isArray(value)) {
+        formData.append(key, JSON.stringify(value));
+      } else {
+        formData.append(key, value as any);
+      }
+    } else {
+      // Default handling for other fields
       if (Array.isArray(value)) {
         formData.append(key, JSON.stringify(value));
       } else {
         formData.append(key, value as any);
       }
-    });
+    }
+  });
 
-    fileList.forEach((file) => {
-      if (file.originFileObj) {
-        formData.append("images", file.originFileObj);
-      }
-    });
+  fileList.forEach((file) => {
+    if (file.originFileObj) {
+      formData.append("images", file.originFileObj);
+    }
+  });
 
-    dispatch(createPackageRequest(formData));
-  };
+  dispatch(createPackageRequest(formData));
+};
 
   useEffect(() => {
     if (!fetchData.current && created) {

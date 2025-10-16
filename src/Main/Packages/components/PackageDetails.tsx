@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import {
   Carousel,
   Tag,
@@ -9,12 +9,29 @@ import {
   Card,
 } from "antd";
 import { ShareAltOutlined, FireOutlined } from "@ant-design/icons";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import type { RootState } from "../../../redux/store";
+import { fetchPackageDetailsRequest } from "../slice";
+import { useParams } from "react-router-dom";
+
 
 const { Title, Paragraph, Text } = Typography;
 
 const PackageDetails: React.FC = () => {
+  console.log("enter");
+
+  const fetchData = useRef(false);
+  const dispatch = useDispatch();
+  const { id } = useParams(); // 👈 This will be '68efd5a78a92f99ca6b86dad'
+  console.log(id);
+
+  useEffect(() => {
+    if (id) {
+      fetchData.current = true;
+      dispatch(fetchPackageDetailsRequest(id));
+
+    }
+  }, []);
   const { PackageDetailsdata, PackageDetailsLoading, PackageDetailsError } = useSelector(
     (state: RootState) => state.packageFront
   );
@@ -49,16 +66,16 @@ const PackageDetails: React.FC = () => {
     );
   }
 
-const handleShare = () => {
-  const phoneNumber = "916397350949";
-  const productLink = window.location.href;
-  const mainImage = PackageDetailsdata.photos?.[0]?.url || "";
-  
-  const message = `Check out this product 👇\n\n Model Name: *${PackageDetailsdata.modelName}*\n💬 Description: ${PackageDetailsdata.description}\n💰 Price: ₹${PackageDetailsdata.finalPrice}\n\n🖼️ Image: ${mainImage}\n🔗 View here: ${productLink}`;
-  
-  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-  window.open(whatsappUrl, "_blank");
-};
+  const handleShare = () => {
+    const phoneNumber = "916397350949";
+    const productLink = window.location.href;
+    const mainImage = PackageDetailsdata.photos?.[0]?.url || "";
+
+    const message = `Check out this product 👇\n\n Model Name: *${PackageDetailsdata.modelName}*\n💬 Description: ${PackageDetailsdata.description}\n💰 Price: ₹${PackageDetailsdata.finalPrice}\n\n🖼️ Image: ${mainImage}\n🔗 View here: ${productLink}`;
+
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, "_blank");
+  };
 
 
 
@@ -133,7 +150,7 @@ const handleShare = () => {
                   </Text>
                 )}
               </Text>
-<br />
+              <br />
               {PackageDetailsdata.availableSizes && (
                 <Text>
                   Sizes:{" "}

@@ -113,8 +113,7 @@ const index = () => {
                             ]}
                             bodyStyle={{ background: "#1f2937" }}
                         >
-                            <h2 className="text-xl font-semibold text-white mb-2">{pkg.title}</h2>
-                            <p className="text-gray-300 mb-2">{pkg.description}</p>
+                            <h2 className="text-xl font-semibold text-white mb-2">{pkg.modelName}</h2>
                             <Switch
                                 checkedChildren="ON"
                                 unCheckedChildren="OFF"

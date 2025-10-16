@@ -17,10 +17,10 @@ const ProductFilter: React.FC<FilterProps> = ({ onFilterChange, availableSizes }
   };
 
   return (
-    <div className="w-64 p-4 bg-white border rounded-lg shadow-sm">
+    <div className="w-full bg-white border rounded-lg shadow-sm p-4">
       <h3 className="font-semibold text-gray-800 mb-3">Filters</h3>
 
-      {/* Size Filter */}
+      {/* Size */}
       <div className="mb-4">
         <h4 className="text-sm font-medium text-gray-700 mb-2">Size</h4>
         <div className="flex flex-wrap gap-2">
@@ -40,7 +40,7 @@ const ProductFilter: React.FC<FilterProps> = ({ onFilterChange, availableSizes }
         </div>
       </div>
 
-      {/* Price Filter */}
+      {/* Price */}
       <div className="mb-4">
         <h4 className="text-sm font-medium text-gray-700 mb-2">Max Price</h4>
         <input
@@ -54,7 +54,7 @@ const ProductFilter: React.FC<FilterProps> = ({ onFilterChange, availableSizes }
 
       <button
         onClick={handleApply}
-        className="w-full bg-indigo-600 text-white text-sm py-1.5 rounded-md hover:bg-indigo-700"
+        className="w-full bg-indigo-600 text-white text-sm py-1.5 rounded-md hover:bg-indigo-700 transition"
       >
         Apply Filters
       </button>

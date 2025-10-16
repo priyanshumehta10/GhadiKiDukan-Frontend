@@ -15,10 +15,16 @@ const categories = [
 export default function CategoryGrid() {
   const dispatch = useDispatch();
   const navigate =  useNavigate();
-  const handleClick = (name:string) => {
-    dispatch(fetchByTagRequest(name))
-    navigate('/packages')
-  }
+
+const handleClick = (name: string) => {
+  // Encode the name for URL
+  const encodedName = encodeURIComponent(name);
+
+  dispatch(fetchByTagRequest(encodedName));
+  navigate(`/packages`);
+};
+
+
   return (
     <div className="px-4 py-10">
       {/* ✨ Section Heading */}

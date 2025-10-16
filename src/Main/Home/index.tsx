@@ -48,7 +48,7 @@ export default function Home() {
           {/* 🛍️ Product Cards Row */}
           <div className="flex gap-4 overflow-x-auto scrollbar-thin scrollbar-thumb-gray-400 pb-2 px-4">
             {data?.map((p: any) => (
-              <ProductCard key={p._id} product={p} />
+              <ProductCard key={p._id} product={p}  />
             ))}
           </div>
         </>

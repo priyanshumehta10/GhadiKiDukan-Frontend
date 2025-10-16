@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 interface ProductCardProps {
   product: {
@@ -11,14 +12,19 @@ interface ProductCardProps {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+  const navigate = useNavigate();
   const image = product.photos?.[0]?.url || "https://via.placeholder.com/300x200";
   const discount =
     product.price > product.finalPrice
       ? Math.round(((product.price - product.finalPrice) / product.price) * 100)
       : 0;
 
+  const handleClick = () => {
+    navigate(`/packages/pck/${product._id}`);
+  }
+
   return (
-    <div className="min-w-[260px] max-w-[260px] bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-[1.03]">
+    <div onClick={handleClick} className="cursor-pointer min-w-[260px] max-w-[260px] bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-[1.03]">
       <img
         src={image}
         alt={product.modelName}
