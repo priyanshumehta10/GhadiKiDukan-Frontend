@@ -22,19 +22,14 @@ const CreateProduct = () => {
   const { created, loading } = useSelector((state: RootState) => state.packages); // ✅ same slice
 
   const handleUploadChange = ({ fileList }: { fileList: any[] }) => {
-    if (fileList.length > 5) {
-      message.warning("Exactly 5 images are required");
+    if (fileList.length > 1) {
+      message.warning("images are required");
       return;
     }
     setFileList(fileList);
   };
 
 const onFinish = (values: any) => {
-  if (fileList.length !== 5) {
-    message.error("Please upload exactly 5 photos");
-    return;
-  }
-
   const formData = new FormData();
 
   Object.entries(values).forEach(([key, value]) => {
@@ -193,7 +188,7 @@ const onFinish = (values: any) => {
 
 
         <Form.Item
-          label={<span className="text-white">Photos (exactly 5)</span>}
+          label={<span className="text-white">Photos</span>}
           required
         >
           <Upload

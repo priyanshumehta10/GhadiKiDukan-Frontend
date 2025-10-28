@@ -261,7 +261,7 @@ const EditProduct = () => {
 
 
                 {/* Photos */}
-                <Form.Item label={<span className="text-white">Photos (exactly 5)</span>}>
+                <Form.Item label={<span className="text-white">Photos</span>}>
                     <Upload
                         listType="picture-card"
                         fileList={fileList}
