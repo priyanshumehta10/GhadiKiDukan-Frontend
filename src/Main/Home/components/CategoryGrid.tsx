@@ -28,17 +28,20 @@ const handleClick = (name: string) => {
   return (
     <div className="px-4 py-10">
       {/* ✨ Section Heading */}
-      <div className="text-center mb-8">
-        <h2 className="text-3xl font-extrabold text-gray-900 tracking-wide font-[Poppins]">
-          <span className="relative inline-block">
-            Shop by <span className="text-indigo-600">Category</span>
-            <span className="absolute -bottom-1 left-0 w-full h-[3px] bg-indigo-500 rounded-full"></span>
-          </span>
-        </h2>
-        <p className="text-gray-500 mt-2 text-sm font-medium">
+    
+      <div className="text-center mt-12 mb-8 relative">
+            <h2 className="text-4xl font-extrabold text-gray-900 tracking-wide font-[Poppins] inline-flex items-center justify-center gap-3">
+              <span className="block w-2 h-10 bg-amber-950 rounded-full"></span>
+              <span className="relative">
+                Shop by <span className="font-bold">Category</span>
+              </span>
+              <span className="block w-2 h-10 bg-amber-950 rounded-full"></span>
+            </h2>
+
+            <p className="text-gray-500 mt-2 text-base font-medium">
           Explore our top collections — stylish, elegant, and trending
-        </p>
-      </div>
+            </p>
+          </div>
 
       {/* 🛍️ Category Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl mx-auto">

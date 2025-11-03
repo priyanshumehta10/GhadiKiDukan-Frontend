@@ -25,7 +25,7 @@ const HomeReviews: React.FC = () => {
         transition={{ duration: 0.5 }}
         className="text-center text-3xl md:text-4xl font-semibold text-gray-800 mb-12 font-[Poppins]"
       >
-        Loved by Our <span className="text-indigo-600 font-bold">Customers</span>
+        Loved by Our <span className="font-bold">Customers</span>
       </motion.h2>
 
       {/* Reviews Grid */}
