@@ -97,7 +97,7 @@ const index = () => {
                                 </Button>,
                                 <Popconfirm
                                     key="delete"
-                                    title="Are you sure to delete this package?"
+                                    title="Are you sure to delete this product?"
                                     onConfirm={() => handleDelete(pkg._id)}
                                     okText="Yes"
                                     cancelText="No"

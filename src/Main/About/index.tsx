@@ -129,7 +129,7 @@ const About: React.FC = () => {
             alt="Founder"
             className="w-32 h-32 rounded-full object-cover shadow-md mb-4"
           />
-          <h3 className="text-lg font-semibold text-gray-800">Somya Shah</h3>
+          <h3 className="text-lg font-semibold text-gray-800">Dikshit Soni</h3>
           <p className="text-gray-500">Founder</p>
         </div>
       </motion.div>

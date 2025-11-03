@@ -41,7 +41,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between w-full md:w-auto">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <img src={ghadiKiDukanLogo} alt="Logo" className="h-18 w-auto" />
+            <img src={ghadiKiDukanLogo} alt="Logo" className="h-18 p-1 w-auto" />
             <span className="text-lg font-semibold tracking-wide text-gray-800" >
               Ghadi ki Dukan
             </span>
