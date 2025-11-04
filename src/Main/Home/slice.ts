@@ -110,6 +110,7 @@ export const {
   fetchByTagRequest,
   fetchByTagSuccess,
   fetchByTagFailure,
+  resetFetchByTagState
 } = homeSlice.actions;
 
 export default homeSlice.reducer;

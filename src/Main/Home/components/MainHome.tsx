@@ -1,15 +1,24 @@
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import type { RootState } from "../../../redux/store";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
+import {resetFetchByTagState} from "../../Home/slice";
+import {resetSearchPackageState} from "../../Packages/slice";
+
 
 export default function BucketListAdventures() {
   const { dataImage } = useSelector((state: RootState) => state.home);
   const images = Array.isArray(dataImage) ? dataImage : [];
-
+  const dispatch = useDispatch();
   const [currentIndex, setCurrentIndex] = useState(0);
   const navigate = useNavigate();
+
+  const handleProduct = () => {
+    dispatch(resetFetchByTagState());
+    dispatch(resetSearchPackageState());
+    navigate("/packages")
+  }
 
   // Auto-slide every 4 seconds
   useEffect(() => {
@@ -56,7 +65,7 @@ export default function BucketListAdventures() {
         {/* View Products button (always visible on carousel) */}
         <button
           className="absolute bottom-5 right-5 bg-white/80 backdrop-blur-md text-black font-semibold px-5 py-2 rounded-full shadow-md hover:bg-black hover:text-white transition-all z-10"
-          onClick={() => navigate("/packages")}
+          onClick={handleProduct}
         >
           View Products
         </button>

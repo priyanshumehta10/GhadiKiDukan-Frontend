@@ -129,6 +129,8 @@ export const {
   searchPackageRequest,
   searchPackageRequestSuccess,
   searchPackageRequestFailure,
+  resetSearchPackageState,
+  resetFetchPackageRequestState,
 } = PackageGroupSlice.actions;
 
 export default PackageGroupSlice.reducer;

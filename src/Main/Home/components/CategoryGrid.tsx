@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import { fetchByTagRequest } from "../slice";
 import { useNavigate } from "react-router-dom";
+import {resetSearchPackageState} from "../../Packages/slice";
 const categories = [
   { name: "Watches", img: "https://res.cloudinary.com/do8shaoon/image/upload/v1760106330/productGroups/jwsbwbutmrrmtxbuflle.webp" },
   { name: "Perfume", img: "https://res.cloudinary.com/do8shaoon/image/upload/v1760106330/productGroups/jwsbwbutmrrmtxbuflle.webp" },
@@ -21,6 +22,8 @@ const handleClick = (name: string) => {
   const encodedName = encodeURIComponent(name);
 
   dispatch(fetchByTagRequest(encodedName));
+  dispatch(resetSearchPackageState());
+
   navigate(`/packages`);
 };
 

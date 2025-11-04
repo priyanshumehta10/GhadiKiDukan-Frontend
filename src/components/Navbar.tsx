@@ -9,6 +9,7 @@ import ghadiKiDukanLogo from "../assets/ghadiKiDukanLogo.png";
 import { motion } from "framer-motion";
 import { MenuOutlined, CloseOutlined, SearchOutlined } from "@ant-design/icons";
 import { InstagramOutlined, WhatsAppOutlined } from "@ant-design/icons";
+import {resetFetchByTagState} from "../Main/Home/slice";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -30,6 +31,7 @@ export default function Navbar() {
       navigate(`/packages`);
       dispatch(searchPackageRequest(searchQuery.trim()));
       setSearchQuery("");
+      dispatch(resetFetchByTagState());
       if (isOpen) setIsOpen(false); // close mobile menu if open
     }
   };

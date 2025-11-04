@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchPackagesRequest } from "./slice";
 import type { RootState } from "../../redux/store";
 import PackageGroupList from "./components/PackageGroupList";
+
 export default function Packages() {
   const fetchData = useRef(false);
   const dispatch = useDispatch();
@@ -16,6 +17,7 @@ export default function Packages() {
   const { PackageGroupLoading, PackageGroupdata, Packagesdata, searchPackagedata, searchPackageLoading} = useSelector((state: RootState) => state.packageFront);
   const { dataFilter, loadingFilter} = useSelector((state: RootState) => state.home);
   console.log(PackageGroupLoading,"PackageGroupdata :", PackageGroupdata,"searchPackagedata :", searchPackagedata,"dataFilter :",dataFilter,"Packagesdata :", Packagesdata );
+
   let displayData;
 
   if (searchPackagedata) {
