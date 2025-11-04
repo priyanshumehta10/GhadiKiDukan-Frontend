@@ -37,11 +37,7 @@ export default function AppFooter() {
                 Terms & Conditions
               </a>
             </li>
-            <li>
-              <a href="/refundPolicy" className="hover:text-white transition">
-                Refund Policy
-              </a>
-            </li>
+           
           </ul>
         </div>
 

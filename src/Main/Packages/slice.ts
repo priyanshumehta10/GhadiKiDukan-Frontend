@@ -61,7 +61,6 @@ const PackageGroupSlice = createSlice({
   name: "home",
   initialState,
   reducers: {
-
     fetchPackagesRequest: (state) => {
       state.PackagesLoading = true;
       state.PackagesError = null;
@@ -72,12 +71,14 @@ const PackageGroupSlice = createSlice({
       state.PackagesError = null;
       state.Packagesdata = action.payload;
     },
-    fetchPackagesRequestFailure: (
-      state,
-      action: PayloadAction<string>
-    ) => {
+    fetchPackagesRequestFailure: (state, action: PayloadAction<string>) => {
       state.PackagesLoading = false;
       state.PackagesError = action.payload;
+      state.Packagesdata = null;
+    },
+    resetFetchPackageRequestState: (state) => {
+      state.PackagesLoading = false;
+      state.PackagesError = null;
       state.Packagesdata = null;
     },
     fetchPackageDetailsRequest: (state, _action: PayloadAction<string>) => {
@@ -108,6 +109,11 @@ const PackageGroupSlice = createSlice({
     searchPackageRequestFailure: (state, action: PayloadAction<string>) => {
       state.searchPackageLoading = false;
       state.searchPackageError = action.payload;
+      state.searchPackagedata = null;
+    },
+    resetSearchPackageState: (state) => {
+      state.searchPackageLoading = false;
+      state.searchPackageError = null;
       state.searchPackagedata = null;
     },
   },

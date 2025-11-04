@@ -4,11 +4,11 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 export interface HomeState {
   data: any;
   loadingPck: boolean;
-  error: string | null; 
+  error: string | null;
   ReviewsLoading: boolean;
-  ReviewsError: any; 
-  Reviewsdata: any;  
-  dataImage?: any; 
+  ReviewsError: any;
+  Reviewsdata: any;
+  dataImage?: any;
   dataFilter?: any;
   loadingFilter?: boolean;
 }
@@ -17,7 +17,7 @@ const initialState: HomeState = {
   data: null,
   loadingPck: false,
   error: null,
-    ReviewsLoading: false,
+  ReviewsLoading: false,
   ReviewsError: null,
   Reviewsdata: null,
   dataImage: null,
@@ -31,8 +31,8 @@ const homeSlice = createSlice({
   reducers: {
     fetchHomeDataRequest: (state) => {
       state.loadingPck = true;
-      state.error = null; 
-      state.data = null; 
+      state.error = null;
+      state.data = null;
     },
     fetchHomeDataSuccess: (state, action: PayloadAction<any>) => {
       state.loadingPck = false;
@@ -41,13 +41,13 @@ const homeSlice = createSlice({
     },
     fetchHomeDataFailure: (state, action: PayloadAction<string>) => {
       state.loadingPck = false;
-      state.error = action.payload;  
-      state.data = null; 
+      state.error = action.payload;
+      state.data = null;
     },
     fetchHomeImageRequest: (state) => {
       state.loadingPck = true;
-      state.error = null; 
-      state.dataImage = null; 
+      state.error = null;
+      state.dataImage = null;
     },
     fetchHomeImageSuccess: (state, action: PayloadAction<any>) => {
       state.loadingPck = false;
@@ -56,13 +56,13 @@ const homeSlice = createSlice({
     },
     fetchHomeImageFailure: (state, action: PayloadAction<string>) => {
       state.loadingPck = false;
-      state.error = action.payload;  
-      state.dataImage = null; 
+      state.error = action.payload;
+      state.dataImage = null;
     },
     fetchByTagRequest: (state, _action: PayloadAction<any>) => {
       state.loadingFilter = true;
-      state.error = null; 
-      state.dataFilter = null; 
+      state.error = null;
+      state.dataFilter = null;
     },
     fetchByTagSuccess: (state, action: PayloadAction<any>) => {
       state.loadingFilter = false;
@@ -71,13 +71,18 @@ const homeSlice = createSlice({
     },
     fetchByTagFailure: (state, action: PayloadAction<string>) => {
       state.loadingFilter = false;
-      state.error = action.payload;  
-      state.dataFilter = null; 
+      state.error = action.payload;
+      state.dataFilter = null;
     },
-     fetchReviewsRequest: (state) => {
+    resetFetchByTagState: (state) => {
+      state.loadingFilter = false;
+      state.error = null;
+      state.dataFilter = null;
+    },
+    fetchReviewsRequest: (state) => {
       state.ReviewsLoading = true;
-      state.ReviewsError = null; 
-      state.Reviewsdata = null; 
+      state.ReviewsError = null;
+      state.Reviewsdata = null;
     },
     fetchReviewsSuccess: (state, action: PayloadAction<any>) => {
       state.ReviewsLoading = false;
@@ -86,8 +91,8 @@ const homeSlice = createSlice({
     },
     fetchReviewsFailure: (state, action: PayloadAction<string>) => {
       state.ReviewsLoading = false;
-      state.ReviewsError = action.payload;  
-      state.Reviewsdata = null; 
+      state.ReviewsError = action.payload;
+      state.Reviewsdata = null;
     },
   },
 });
